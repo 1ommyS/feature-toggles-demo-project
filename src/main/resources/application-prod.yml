@@ -1,0 +1,12 @@
+feature-flags:
+  provider: ${FEATURE_FLAGS_PROVIDER:unleash}
+
+server:
+  tomcat:
+    threads:
+      max: ${TOMCAT_MAX_THREADS:200}
+      min-spare: ${TOMCAT_MIN_SPARE_THREADS:10}
+
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 20s

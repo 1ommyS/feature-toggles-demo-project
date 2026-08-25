@@ -1,0 +1,44 @@
+replicaCount: 2
+
+imagePullSecrets: []
+
+image:
+  repository: ghcr.io/your-org/kotlin-feature-toggle-demo
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+config:
+  springProfilesActive: prod
+  featureFlagsProvider: unleash
+  unleashUrl: https://unleash.example.com/api
+  dbPoolMaxSize: "10"
+
+existingSecret: offer-service-secrets
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 1000m
+    memory: 768Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 8
+  targetCPUUtilizationPercentage: 70
+
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+
+ingress:
+  enabled: false
+  className: nginx
+  host: offers.example.com
