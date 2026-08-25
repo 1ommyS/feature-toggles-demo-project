@@ -6,7 +6,7 @@ COPY src ./src
 
 RUN gradle --no-daemon clean bootJar
 
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:25-jre-alpine
 
 RUN addgroup -S app && adduser -S -G app -u 10001 app
 WORKDIR /app
