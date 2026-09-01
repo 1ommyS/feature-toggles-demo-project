@@ -32,7 +32,7 @@ dependencies {
     implementation("org.flywaydb:flyway-database-postgresql")
     runtimeOnly("org.postgresql:postgresql")
 
-    implementation("io.getunleash:unleash-client-java:12.2.3")
+    implementation("io.getunleash:unleash-client-java:12.3.0")
     runtimeOnly("io.micrometer:micrometer-registry-prometheus")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
